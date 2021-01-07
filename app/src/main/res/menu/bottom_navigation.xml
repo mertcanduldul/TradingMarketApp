@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/profileActionId"
+        android:icon="@drawable/profile_img"
+        android:title="Profile" />
+    <item
+        android:id="@+id/searchActionId"
+        android:icon="@drawable/search_img"
+        android:title="Search" />
+    <item
+        android:id="@+id/messageActionId"
+        android:icon="@drawable/message_img"
+        android:title="Message" />
+</menu>
