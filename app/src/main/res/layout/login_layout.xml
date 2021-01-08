@@ -18,23 +18,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="340dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="290dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="0dp"
-            app:srcCompat="@drawable/login_asset" />
-
-    </RelativeLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="150dp"
             android:text="SING IN"
             android:textColor="@color/white"
@@ -88,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="170dp"
             android:layout_marginEnd="300dp"
             android:text="LOGIN"
             android:textColor="@color/white"
@@ -102,7 +89,7 @@
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="280dp"
+            android:layout_marginTop="290dp"
             android:backgroundTint="#B52020"
             android:hint="Password"
             android:textColorHint="@color/white"
@@ -134,7 +121,7 @@
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="210dp"
             android:backgroundTint="#B52020"
             android:hint="Email"
             android:textColorHint="@color/white"
@@ -159,6 +146,16 @@
                 android:textColorLink="@color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/login_bg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

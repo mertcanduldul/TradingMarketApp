@@ -49,31 +49,36 @@ public class SingUpActivity extends AppCompatActivity {
 
 
                 dbRef.addValueEventListener(new ValueEventListener() {
-                    List<Kullanici> listKullanici = new ArrayList<>();
+                    Boolean state = false;
+                    int counter = 1;
+                    int unique = 0;
 
-                    @SuppressLint("ResourceAsColor")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         Kullanici k1 = new Kullanici();
-                        Boolean state = false;
-                        int counter = 1;
 
                         for (DataSnapshot d : dataSnapshot.getChildren()) {
                             Kullanici sorguKullanici = d.getValue(Kullanici.class);
-                            if (sorguKullanici.getKullanici_adi().equals(strEmail)) {
+                            if (sorguKullanici.getKullanici_adi().equals(strEmail) && unique != 2) {
                                 state = true;
                                 counter++;
+
                                 if (counter == 2) {
                                     Toast.makeText(getApplicationContext(), "Kullanici Adı Kullanılıyor !", Toast.LENGTH_SHORT).show();
+                                    break;
                                 }
                             }
                         }
                         if (state == false && counter == 1) {//Böyle bir kullanıcı yok
                             k1.setKullanici_adi(strEmail);
                             k1.setKullanici_sifre(strPassword);
+                            k1.setKullanici_adi(strFullName);
                             dbRef.push().setValue(k1);
-                            Toast.makeText(getApplicationContext(), "Kullanıcı Oluşturuldu.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Hesap Oluşturuldu", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                            state = true;
+                            counter = 99;
+                            unique = 2;
                         }
                         for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             String key = ds.getKey();
@@ -85,9 +90,9 @@ public class SingUpActivity extends AppCompatActivity {
 
                     }
 
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                     }
                 });
             }

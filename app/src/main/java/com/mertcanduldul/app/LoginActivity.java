@@ -26,8 +26,6 @@ import java.util.List;
 public class LoginActivity extends AppCompatActivity {
     private Button buttonKayıtGecisYap, buttonLoginGirisYap;
     private TextInputEditText textLoginMail, textLoginPassword;
-    private String kullanicimail, kullanicisifre;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("kullanici");
                 myRef.addValueEventListener(new ValueEventListener() {
+
                     List<Kullanici> listKullanici = new ArrayList<>();
 
                     @Override
@@ -77,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
-
         buttonKayıtGecisYap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
