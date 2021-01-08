@@ -9,8 +9,6 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
@@ -20,8 +18,16 @@ import java.util.List;
 
 public class SearchActivity extends Fragment {
     private Button detailButton;
-    List<ModalClass> mList;
+    List<Urun> mList;
     CustomAdapter customAdapter;
+
+    public List<Urun> getmList() {
+        return mList;
+    }
+
+    public void setmList(List<Urun> mList) {
+        this.mList = mList;
+    }
 
     @Nullable
     @Override
@@ -43,9 +49,9 @@ public class SearchActivity extends Fragment {
         //Oncreate Metodu içinde veriler eklenmeli yoksa null olan bir context tanımlanır
         //bu da programın çökmesine sebeptir
         mList = new ArrayList<>();
-        mList.add(new ModalClass(1, "Monster Abra", "monster", "Intel i7-8750 1050Tİ", 4500));
-        mList.add(new ModalClass(2, "Lenovo Legion", "lenovo", "Intel i5-8300 1050", 4500));
-        mList.add(new ModalClass(3, "MSİ MF", "msi", "Intel i7-9750 2060", 4500));
+        mList.add(new Urun(1, "Monster Abra", "monster", "Intel i7-8750 1050Tİ", 4500));
+        mList.add(new Urun(2, "Lenovo Legion", "lenovo", "Intel i5-8300 1050", 4500));
+        mList.add(new Urun(3, "MSİ MF", "msi", "Intel i7-9750 2060", 4500));
 
 
 
