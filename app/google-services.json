@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "642107297866",
+    "firebase_url": "https://trademarketapp-f81f7-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "trademarketapp-f81f7",
+    "storage_bucket": "trademarketapp-f81f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642107297866:android:e955c4092f2d34093296b3",
+        "android_client_info": {
+          "package_name": "com.mertcanduldul.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642107297866-2bpbid9hvtabo5n5tgk5p5gi7gfs60dh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACm4ZTtQ2XVLBJucUrtVfqen8TPKJI_dU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642107297866-2bpbid9hvtabo5n5tgk5p5gi7gfs60dh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
