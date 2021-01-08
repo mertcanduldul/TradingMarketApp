@@ -9,25 +9,30 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHolder> {
 
-    List<ModalClass> mList;
+    List<Urun> mList;
     Context context;
 
-    public CustomAdapter(List<ModalClass> mList, Context context) {
+    public CustomAdapter(List<Urun> mList, Context context) {
         this.mList = mList;
         this.context = context;
+    }
+
+    public List<Urun> getmList() {
+        return mList;
+    }
+
+    public void setmList(List<Urun> mList) {
+        this.mList = mList;
     }
 
     @NonNull
@@ -41,29 +46,28 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
-        ModalClass m = mList.get(position);
+        Urun m = mList.get(position);
+        int urunid = m.getUrun_id();
         holder.textUrunAdi.setText(m.getUrun_adi());
         holder.textAciklama.setText(m.getUrun_aciklama());
-        holder.textUrunFiyat.setText(String.valueOf(m.getUrun_fiyat()+" ₺"));
+        holder.textUrunFiyat.setText(String.valueOf(m.getUrun_fiyat() + " ₺"));
         holder.urunImage.setImageResource(context.getResources().getIdentifier(m.getUrun_fotograf(), "drawable", context.getOpPackageName()));
 
         holder.buttonDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Clicked button at position: " + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(v.getContext(), "Clicked button at position: " + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 DetailActivity myFragment = new DetailActivity();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,myFragment).addToBackStack(null).commit();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, myFragment).addToBackStack(null).commit();
 
-                Bundle bundle=new Bundle();
-                bundle.putString("urun_adi",holder.textUrunAdi.getText().toString());
-                bundle.putString("urun_aciklama",holder.textAciklama.getText().toString());
-                bundle.putString("urun_fiyat",holder.textUrunFiyat.getText().toString());
-
+                Bundle bundle = new Bundle();
+                bundle.putInt("urun_id", urunid);
+                bundle.putString("urun_adi", holder.textUrunAdi.getText().toString());
+                bundle.putString("urun_aciklama", holder.textAciklama.getText().toString());
+                bundle.putString("urun_fiyat", holder.textUrunFiyat.getText().toString());
+                bundle.putString("urun_fotograf", m.getUrun_fotograf());
                 myFragment.setArguments(bundle);
-
-
-
             }
         });
     }
