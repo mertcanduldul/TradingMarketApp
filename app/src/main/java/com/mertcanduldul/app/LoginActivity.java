@@ -21,7 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private Button buttonKayıtGecisYap, buttonLoginGirisYap;
@@ -31,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+
 
         buttonKayıtGecisYap = findViewById(R.id.buttonKayıtGecisYap);
         buttonLoginGirisYap = findViewById(R.id.buttonLoginGirisYap);
@@ -43,28 +46,29 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String strMail = textLoginMail.getText().toString();
                 String strPassword = textLoginPassword.getText().toString();
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("kullanici");
-                myRef.addValueEventListener(new ValueEventListener() {
 
-                    List<Kullanici> listKullanici = new ArrayList<>();
+                FirebaseDatabase db = FirebaseDatabase.getInstance();
+                DatabaseReference loginRef = db.getReference("kullanici");
+                loginRef.addValueEventListener(new ValueEventListener() {
 
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot d : dataSnapshot.getChildren()) {
+                        for (DataSnapshot c : dataSnapshot.getChildren()) {
+                            String key = c.getKey();
+                            Kullanici k1=c.getValue(Kullanici.class);
 
-                            Kullanici k1 = d.getValue(Kullanici.class);
-                            String key = d.getKey();
-                            k1.setKullanici_id(key);
-                            listKullanici.add(k1);
 
-                            String a = k1.getKullanici_adi().toString();
-                            String b = k1.getKullanici_sifre().toString();
+                            String dbUsername = k1.getKullanici_adi().toString();
+                            String dbPassword = k1.getKullanici_sifre().toString();
+                            String strFullName = k1.getKullanici_fullname().toString();
 
-                            if (a.equals(strMail) && b.equals(strPassword)) {
+                            if (dbUsername.equals(strMail) && dbPassword.equals(strPassword)) {
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                intent.putExtra("username", a);
+                                intent.putExtra("userfullname", strFullName);
+                                intent.putExtra("username",dbUsername);
+                                intent.putExtra("userkey", key);
                                 startActivity(intent);
+                                finish();
                             }
                         }
                     }

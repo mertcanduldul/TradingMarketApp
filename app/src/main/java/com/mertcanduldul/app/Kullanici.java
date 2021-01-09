@@ -8,20 +8,19 @@ import java.util.List;
 
 public class Kullanici {
     private String kullanici_id;
-    private String kullanici_sifre;
+    private String kullanici_fullname;
     private String kullanici_adi;
-    private List<Urun> kullanici_urunler;
+    private String kullanici_sifre;
 
-    DatabaseReference databaseReference;
+
     public Kullanici() {
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("kullanici");
+
     }
 
-    public Kullanici(String kullanici_id, String kullanici_sifre, String kullanici_adi, ArrayList<Urun> kullanici_urunler) {
+    public Kullanici(String kullanici_id, String kullanici_sifre, String kullanici_adi) {
         this.kullanici_id = kullanici_id;
         this.kullanici_sifre = kullanici_sifre;
         this.kullanici_adi = kullanici_adi;
-        this.kullanici_urunler = kullanici_urunler;
     }
 
     public String getKullanici_id() {
@@ -48,11 +47,12 @@ public class Kullanici {
         this.kullanici_adi = kullanici_adi;
     }
 
-    public List<Urun> getKullanici_urunler() {
-        return kullanici_urunler;
+
+    public String getKullanici_fullname() {
+        return kullanici_fullname;
     }
 
-    public void setKullanici_urunler(List<Urun> kullanici_urunler) {
-        this.kullanici_urunler = kullanici_urunler;
+    public void setKullanici_fullname(String kullanici_fullname) {
+        this.kullanici_fullname = kullanici_fullname;
     }
 }

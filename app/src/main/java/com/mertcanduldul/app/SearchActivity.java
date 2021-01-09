@@ -35,7 +35,7 @@ public class SearchActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.search_layout, container, false);
 
-        ImageView img=view.findViewById(R.id.imageView2);
+        ImageView img = view.findViewById(R.id.imageView2);
 
         RecyclerView rv = view.findViewById(R.id.rv);
         customAdapter = new CustomAdapter(mList, getContext());
@@ -51,10 +51,9 @@ public class SearchActivity extends Fragment {
         //Oncreate Metodu içinde veriler eklenmeli yoksa null olan bir context tanımlanır
         //bu da programın çökmesine sebeptir
         mList = new ArrayList<>();
-        mList.add(new Urun(1, "Monster Abra", "monster", "Intel i7-8750 1050Tİ", 4500));
-        mList.add(new Urun(2, "Lenovo Legion", "lenovo", "Intel i5-8300 1050", 4500));
-        mList.add(new Urun(3, "MSİ MF", "msi", "Intel i7-9750 2060", 4500));
-
+        mList.add(new Urun("1", "Monster Abra", "monster", "Intel i7-8750 1050Tİ", 4500, "-MQUGRnAueCaOTiqLa3W"));
+        mList.add(new Urun("2", "Lenovo Legion", "lenovo", "Intel i5-8300 1050", 4500, "-MQUGRnAueCaOTiqLa3W"));
+        mList.add(new Urun("3", "MSİ MF", "msi", "Intel i7-9750 2060", 4500, "-MQUGRnAueCaOTiqLa3W"));
 
 
     }

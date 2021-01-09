@@ -1,28 +1,38 @@
 package com.mertcanduldul.app;
 
 public class Urun {
-    private int urun_id;
+    private String urun_id;
     private String urun_adi;
     private String urun_fotograf;
     private String urun_aciklama;
     private int urun_fiyat;
+    private String urun_sahibi_id;
 
-    public Urun(int urun_id, String urun_adi, String urun_fotograf, String urun_aciklama, int urun_fiyat) {
+    public Urun() {
+    }
+
+    public Urun(String urun_id, String urun_adi, String urun_fotograf, String urun_aciklama, int urun_fiyat, String urun_sahibi_id) {
         this.urun_id = urun_id;
         this.urun_adi = urun_adi;
         this.urun_fotograf = urun_fotograf;
         this.urun_aciklama = urun_aciklama;
         this.urun_fiyat = urun_fiyat;
+        this.urun_sahibi_id = urun_sahibi_id;
     }
 
-    public Urun() {
+    public String getUrun_sahibi_id() {
+        return urun_sahibi_id;
     }
 
-    public int getUrun_id() {
+    public void setUrun_sahibi_id(String urun_sahibi_id) {
+        this.urun_sahibi_id = urun_sahibi_id;
+    }
+
+    public String getUrun_id() {
         return urun_id;
     }
 
-    public void setUrun_id(int urun_id) {
+    public void setUrun_id(String urun_id) {
         this.urun_id = urun_id;
     }
 

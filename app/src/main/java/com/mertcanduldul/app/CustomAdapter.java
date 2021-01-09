@@ -47,10 +47,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         Urun m = mList.get(position);
-        int urunid = m.getUrun_id();
+        String  urunid = m.getUrun_id();
         holder.textUrunAdi.setText(m.getUrun_adi());
         holder.textAciklama.setText(m.getUrun_aciklama());
-        holder.textUrunFiyat.setText(String.valueOf(m.getUrun_fiyat() + " ₺"));
+        holder.textUrunFiyat.setText(m.getUrun_fiyat() + " ₺");
         holder.urunImage.setImageResource(context.getResources().getIdentifier(m.getUrun_fotograf(), "drawable", context.getOpPackageName()));
 
         holder.buttonDetail.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +62,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, myFragment).addToBackStack(null).commit();
 
                 Bundle bundle = new Bundle();
-                bundle.putInt("urun_id", urunid);
+                bundle.putString("urun_id", urunid);
                 bundle.putString("urun_adi", holder.textUrunAdi.getText().toString());
                 bundle.putString("urun_aciklama", holder.textAciklama.getText().toString());
                 bundle.putString("urun_fiyat", holder.textUrunFiyat.getText().toString());

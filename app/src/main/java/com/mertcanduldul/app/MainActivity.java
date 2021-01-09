@@ -26,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        String usr = getIntent().getStringExtra("username");
+        String usernamefullname = getIntent().getStringExtra("userfullname");
+        String username = getIntent().getStringExtra("username");
+        String userkey = getIntent().getStringExtra("userkey");
 
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -38,17 +40,32 @@ public class MainActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.profileActionId) {
                     tempFragment = new ProfileActivity();
                     Bundle bundle = new Bundle();
-                    bundle.putString("username", usr);
+                    bundle.putString("userfullname", usernamefullname);
+                    bundle.putString("username", username);
+                    bundle.putString("userkey", userkey);
+
                     tempFragment.setArguments(bundle);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, tempFragment).commit();
 
                 }
                 if (item.getItemId() == R.id.searchActionId) {
                     tempFragment = new SearchActivity();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("usernamefullname", usernamefullname);
+                    bundle.putString("username", username);
+                    bundle.putString("userkey", userkey);
+                    tempFragment.setArguments(bundle);
                 }
                 if (item.getItemId() == R.id.messageActionId) {
                     tempFragment = new MessageActivity();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("usernamefullname", usernamefullname);
+                    bundle.putString("username", username);
+                    bundle.putString("userkey", userkey);
+
+                    tempFragment.setArguments(bundle);
                 }
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, tempFragment).commit();
                 return true;
             }

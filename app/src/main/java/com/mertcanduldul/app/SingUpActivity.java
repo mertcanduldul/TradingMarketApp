@@ -72,7 +72,7 @@ public class SingUpActivity extends AppCompatActivity {
                         if (state == false && counter == 1) {//Böyle bir kullanıcı yok
                             k1.setKullanici_adi(strEmail);
                             k1.setKullanici_sifre(strPassword);
-                            k1.setKullanici_adi(strFullName);
+                            k1.setKullanici_fullname(strFullName);
                             dbRef.push().setValue(k1);
                             Toast.makeText(getApplicationContext(), "Hesap Oluşturuldu", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), LoginActivity.class));
