@@ -37,11 +37,19 @@
 
         <Button
             android:id="@+id/buttonProfileAddProduct"
-            android:layout_width="wrap_content"
+            android:layout_width="133dp"
             android:layout_height="wrap_content"
             android:text="Eşyamı Sat"
             android:translationX="250dp"
             android:translationY="10dp" />
+
+        <Button
+            android:id="@+id/buttonRvLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SATTIKLARIM"
+            android:translationX="250dp"
+            android:translationY="60dp" />
     </FrameLayout>
 
     <ImageView
@@ -55,8 +63,10 @@
         app:srcCompat="@drawable/profile_top" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profileRv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/frameLayout" />

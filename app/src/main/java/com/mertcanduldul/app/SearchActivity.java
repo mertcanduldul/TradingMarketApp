@@ -20,15 +20,8 @@ import java.util.List;
 public class SearchActivity extends Fragment {
     private Button detailButton;
     List<Urun> mList;
-    CustomAdapter customAdapter;
+    private CustomAdapter customAdapter;
 
-    public List<Urun> getmList() {
-        return mList;
-    }
-
-    public void setmList(List<Urun> mList) {
-        this.mList = mList;
-    }
 
     @Nullable
     @Override

@@ -8,8 +8,7 @@ public class Urun {
     private int urun_fiyat;
     private String urun_sahibi_id;
 
-    public Urun() {
-    }
+
 
     public Urun(String urun_id, String urun_adi, String urun_fotograf, String urun_aciklama, int urun_fiyat, String urun_sahibi_id) {
         this.urun_id = urun_id;
@@ -18,6 +17,8 @@ public class Urun {
         this.urun_aciklama = urun_aciklama;
         this.urun_fiyat = urun_fiyat;
         this.urun_sahibi_id = urun_sahibi_id;
+    }
+    public Urun() {
     }
 
     public String getUrun_sahibi_id() {

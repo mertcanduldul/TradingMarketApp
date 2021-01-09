@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,11 +21,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AddProduct extends Fragment {
     private EditText textCityname, textProductName, textProductPrice, textProductDescription;
     private Button buttonProductAdd, buttonProductPhotoPicker;
+    List<Urun> urunList;
 
     @Nullable
     @Override
@@ -70,9 +74,10 @@ public class AddProduct extends Fragment {
                                 u1.setUrun_sahibi_id(userkey);
 
                                 myref.push().setValue(u1);
-                                Toast.makeText(getActivity(), "URUN SATIŞA ÇIKTI !", Toast.LENGTH_SHORT);
+                                Toast.makeText(getActivity(),"URUN SATIŞA ÇIKTI !",Toast.LENGTH_SHORT);
+
                             }
-                            unique = false;
+                            unique=false;
                         }
                     }
 
