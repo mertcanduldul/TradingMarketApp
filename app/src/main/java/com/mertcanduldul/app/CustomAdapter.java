@@ -1,8 +1,10 @@
 package com.mertcanduldul.app;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHolder> {
@@ -25,14 +29,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
     public CustomAdapter(List<Urun> mList, Context context) {
         this.mList = mList;
         this.context = context;
-    }
-
-    public List<Urun> getmList() {
-        return mList;
-    }
-
-    public void setmList(List<Urun> mList) {
-        this.mList = mList;
     }
 
     @NonNull
@@ -47,26 +43,29 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         Urun m = mList.get(position);
-        String  urunid = m.getUrun_id();
+        String urunid = m.getUrun_id();
         holder.textUrunAdi.setText(m.getUrun_adi());
         holder.textAciklama.setText(m.getUrun_aciklama());
         holder.textUrunFiyat.setText(m.getUrun_fiyat() + " ₺");
-        holder.urunImage.setImageResource(context.getResources().getIdentifier(m.getUrun_fotograf(), "drawable", context.getOpPackageName()));
+        //holder.urunImage.setImageURI(Uri.parse(m.getUrun_fotograf()));
+        Picasso.get().load(m.getUrun_fotograf()).into(holder.urunImage);
 
         holder.buttonDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(v.getContext(), "Clicked button at position: " + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 DetailActivity myFragment = new DetailActivity();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, myFragment).addToBackStack(null).commit();
+
 
                 Bundle bundle = new Bundle();
                 bundle.putString("urun_id", urunid);
                 bundle.putString("urun_adi", holder.textUrunAdi.getText().toString());
                 bundle.putString("urun_aciklama", holder.textAciklama.getText().toString());
                 bundle.putString("urun_fiyat", holder.textUrunFiyat.getText().toString());
-                bundle.putString("urun_fotograf", m.getUrun_fotograf());
+                //Uri uri = Uri.parse(m.getUrun_fotograf());
+               // bundle.putParcelable("urun_fotograf", uri);
+
                 myFragment.setArguments(bundle);
             }
         });

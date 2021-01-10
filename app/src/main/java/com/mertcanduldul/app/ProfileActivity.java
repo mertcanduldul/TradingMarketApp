@@ -92,8 +92,6 @@ public class ProfileActivity extends Fragment {
         DatabaseReference myref = db.getReference("urun");
         urunList = new ArrayList<>();
         myref.addValueEventListener(new ValueEventListener() {
-            int i = 0;
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot d : dataSnapshot.getChildren()) {
@@ -108,8 +106,6 @@ public class ProfileActivity extends Fragment {
 
                         if (dburunkey.equals(userkey)) {
                             urunList.add(new Urun(u1.getUrun_id(), u1.getUrun_adi(), u1.getUrun_fotograf(), u1.getUrun_aciklama(), u1.getUrun_fiyat(), u1.getUrun_sahibi_id()));
-                            i++;
-
                         }
                     }
                 }

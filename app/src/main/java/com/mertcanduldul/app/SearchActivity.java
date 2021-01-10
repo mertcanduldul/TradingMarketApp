@@ -13,27 +13,63 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class SearchActivity extends Fragment {
     private Button detailButton;
-    List<Urun> mList;
+    List<Urun> mList =new ArrayList<>();
     private CustomAdapter customAdapter;
+    private RecyclerView rv;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.search_layout, container, false);
-
         ImageView img = view.findViewById(R.id.imageView2);
 
+        FirebaseStorage dbstorage=FirebaseStorage.getInstance();
+        StorageReference uploadref=dbstorage.getReference("Images");
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference myref = db.getReference("urun");
+        myref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    Urun u2 = d.getValue(Urun.class);
+                    String key = d.getKey();
+                    mList.add(u2);
+                }
+                if (customAdapter != null || rv != null) {
+                    rv = view.findViewById(R.id.rv);
+                    customAdapter = new CustomAdapter(mList, getContext());
+                    rv.setAdapter(customAdapter);
+                    rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         RecyclerView rv = view.findViewById(R.id.rv);
         customAdapter = new CustomAdapter(mList, getContext());
         rv.setAdapter(customAdapter);
         rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
 
         return view;
     }
@@ -41,13 +77,6 @@ public class SearchActivity extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Oncreate Metodu içinde veriler eklenmeli yoksa null olan bir context tanımlanır
-        //bu da programın çökmesine sebeptir
-        mList = new ArrayList<>();
-        mList.add(new Urun("1", "Monster Abra", "monster", "Intel i7-8750 1050Tİ", 4500, "-MQUGRnAueCaOTiqLa3W"));
-        mList.add(new Urun("2", "Lenovo Legion", "lenovo", "Intel i5-8300 1050", 4500, "-MQUGRnAueCaOTiqLa3W"));
-        mList.add(new Urun("3", "MSİ MF", "msi", "Intel i7-9750 2060", 4500, "-MQUGRnAueCaOTiqLa3W"));
-
 
     }
 }

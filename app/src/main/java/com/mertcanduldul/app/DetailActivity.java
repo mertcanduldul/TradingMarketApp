@@ -1,5 +1,6 @@
 package com.mertcanduldul.app;
 
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,11 +28,11 @@ public class DetailActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.detail_layout, container, false);
 
-        int urun_id = getArguments().getInt("urun_id");
+        String urun_id = getArguments().getString("urun_id");
         String strurun_adi = getArguments().getString("urun_adi");
         String strurun_aciklama = getArguments().getString("urun_aciklama");
         String strurun_fiyat = getArguments().getString("urun_fiyat");
-        String strurun_fotograf = getArguments().getString("urun_fotograf");
+        String strurun_fotograf = getArguments().getParcelable("urun_fotograf");
 
         urun_adi = view.findViewById(R.id.detayTextUrunAdi);
         urun_aciklama = view.findViewById(R.id.detayTextUrunAciklama);
@@ -41,7 +42,7 @@ public class DetailActivity extends Fragment {
         urun_adi.setText(strurun_adi);
         urun_aciklama.setText(strurun_aciklama);
         urun_fiyat.setText(strurun_fiyat);
-        imageView.setImageResource(getContext().getResources().getIdentifier(strurun_fotograf, "drawable", getContext().getOpPackageName()));
+        //imageView.setImageURI(urix);
         return view;
     }
 }
