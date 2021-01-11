@@ -105,7 +105,7 @@ public class ProfileActivity extends Fragment {
                         String dburunkey = u1.getUrun_sahibi_id().toString();
 
                         if (dburunkey.equals(userkey)) {
-                            urunList.add(new Urun(u1.getUrun_id(), u1.getUrun_adi(), u1.getUrun_fotograf(), u1.getUrun_aciklama(), u1.getUrun_fiyat(), u1.getUrun_sahibi_id()));
+                            urunList.add(u1);
                         }
                     }
                 }

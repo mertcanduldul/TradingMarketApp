@@ -16,16 +16,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/buttonuploadimage"
-        android:layout_width="119dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="24dp"
-        android:text="Fotoğraf Yükle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imageProductPhoto"
         android:layout_width="118dp"

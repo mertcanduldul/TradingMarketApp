@@ -7,18 +7,38 @@ public class Urun {
     private String urun_aciklama;
     private int urun_fiyat;
     private String urun_sahibi_id;
+    private String urun_lokasyon;
+    private String urun_yuklenme_tarih;
 
 
-
-    public Urun(String urun_id, String urun_adi, String urun_fotograf, String urun_aciklama, int urun_fiyat, String urun_sahibi_id) {
+    public Urun(String urun_id, String urun_adi, String urun_fotograf, String urun_aciklama, int urun_fiyat, String urun_sahibi_id, String urun_lokasyon, String urun_yuklenme_tarih) {
         this.urun_id = urun_id;
         this.urun_adi = urun_adi;
         this.urun_fotograf = urun_fotograf;
         this.urun_aciklama = urun_aciklama;
         this.urun_fiyat = urun_fiyat;
         this.urun_sahibi_id = urun_sahibi_id;
+        this.urun_lokasyon = urun_lokasyon;
+        this.urun_yuklenme_tarih = urun_yuklenme_tarih;
     }
+
     public Urun() {
+    }
+
+    public String getUrun_yuklenme_tarih() {
+        return urun_yuklenme_tarih;
+    }
+
+    public void setUrun_yuklenme_tarih(String urun_yuklenme_tarih) {
+        this.urun_yuklenme_tarih = urun_yuklenme_tarih;
+    }
+
+    public String getUrun_lokasyon() {
+        return urun_lokasyon;
+    }
+
+    public void setUrun_lokasyon(String urun_lokasyon) {
+        this.urun_lokasyon = urun_lokasyon;
     }
 
     public String getUrun_sahibi_id() {
