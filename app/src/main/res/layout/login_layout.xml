@@ -18,7 +18,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -28,25 +30,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonLoginGirisYap"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="150dp"
-            android:text="SING IN"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:translationX="10dp"
-            android:translationY="0dp"
-            app:backgroundTint="#293B72"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-            app:strokeColor="@color/white" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonKayıtGecisYap"
@@ -86,51 +69,56 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="290dp"
-            android:backgroundTint="#B52020"
             android:hint="Password"
             android:textColorHint="@color/white"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/white"
-            app:boxStrokeErrorColor="@color/design_default_color_error"
-            app:counterOverflowTextColor="@color/design_default_color_error"
-            app:counterTextColor="@color/white"
-            app:hintTextColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
 
+            app:boxStrokeColor="#FFFFFF"
+            app:boxStrokeWidth="2dp"
+            app:hintTextColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+
+
+            app:layout_constraintTop_toTopOf="parent"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/textLoginPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#293B72"
-                android:backgroundTint="#293B72"
-                android:password="true"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/white"
+                android:foregroundTint="#FFFFFF"
+                android:shadowColor="#FFFFFF"
                 android:textColorHint="@color/white"
-                android:textColorLink="@color/white" />
+                android:textColor="@color/white"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="350dp"
             android:layout_height="80dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="210dp"
-            android:backgroundTint="#B52020"
             android:hint="Email"
             android:textColorHint="@color/white"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/white"
-            app:boxStrokeErrorColor="@color/design_default_color_error"
-            app:counterOverflowTextColor="@color/design_default_color_error"
-            app:counterTextColor="@color/white"
-            app:hintTextColor="@color/white"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="10dp"
+            app:boxCornerRadiusBottomStart="10dp"
+            app:boxCornerRadiusTopEnd="10dp"
+            app:boxCornerRadiusTopStart="10dp"
+            app:boxStrokeColor="#FFFFFF"
+
+            app:boxStrokeWidth="2dp"
+            app:hintTextColor="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -138,12 +126,11 @@
                 android:id="@+id/textLoginMail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#293B72"
-                android:backgroundTint="#293B72"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/white"
+                android:foregroundTint="#FFFFFF"
+                android:shadowColor="#FFFFFF"
                 android:textColorHint="@color/white"
-                android:textColorLink="@color/white" />
+                android:textColor="@color/white"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -156,6 +143,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/login_bg" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonLoginGirisYap"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:text="SING IN"
+
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:translationX="10dp"
+            android:translationY="0dp"
+            app:backgroundTint="#293B72"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+            app:strokeColor="@color/white" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,29 @@
 package com.mertcanduldul.app;
 
 public class Mesaj {
+    private String id;
     private String fromKisi;
     private String toKisi;
     private String zaman;
     private String mesajicerik;
 
-    public Mesaj(String fromKisi, String toKisi, String zaman, String mesajicerik) {
+    public Mesaj() {
+    }
+
+    public Mesaj(String id, String fromKisi, String toKisi, String zaman, String mesajicerik) {
+        this.id = id;
         this.fromKisi = fromKisi;
         this.toKisi = toKisi;
         this.zaman = zaman;
         this.mesajicerik = mesajicerik;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFromKisi() {
