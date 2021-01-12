@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,7 +28,7 @@ import java.util.List;
 
 public class SearchActivity extends Fragment {
     private Button detailButton;
-    List<Urun> mList =new ArrayList<>();
+    List<Urun> mList = new ArrayList<>();
     private CustomAdapter customAdapter;
     private RecyclerView rv;
 
@@ -38,25 +39,36 @@ public class SearchActivity extends Fragment {
         View view = inflater.inflate(R.layout.search_layout, container, false);
         ImageView img = view.findViewById(R.id.imageView2);
 
-        FirebaseStorage dbstorage=FirebaseStorage.getInstance();
-        StorageReference uploadref=dbstorage.getReference("Images");
+        FirebaseStorage dbstorage = FirebaseStorage.getInstance();
+        StorageReference uploadref = dbstorage.getReference("Images");
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference myref = db.getReference("urun");
         myref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (getArguments() != null) {
+                    for (DataSnapshot d : dataSnapshot.getChildren()) {
+                        Urun u2 = d.getValue(Urun.class);
+                        String key = d.getKey();
+                        mList.add(u2);
+                        Bundle b = new Bundle();
+                        b.putString("productowner", u2.getUrun_sahibi_id());
+                    }
+                    if (customAdapter != null || rv != null) {
+                        String userfullname = getArguments().getString("userfullname");
+                        String username = getArguments().getString("username");
+                        String userkey = getArguments().getString("userkey");
 
-                for (DataSnapshot d : dataSnapshot.getChildren()) {
-                    Urun u2 = d.getValue(Urun.class);
-                    String key = d.getKey();
-                    mList.add(u2);
-                }
-                if (customAdapter != null || rv != null) {
-                    rv = view.findViewById(R.id.rv);
-                    customAdapter = new CustomAdapter(mList, getContext());
-                    rv.setAdapter(customAdapter);
-                    rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                        rv = view.findViewById(R.id.rv);
+                        customAdapter = new CustomAdapter(mList, getContext());
+                        customAdapter.setUserkey(userkey);
+                        customAdapter.setUserfullname(userfullname);
+                        customAdapter.setUsername(username);
+                        rv.setAdapter(customAdapter);
+                        rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                    }
+
                 }
             }
 

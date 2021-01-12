@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,13 +24,17 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class MessageActivity extends Fragment {
     private RecyclerView rvMessageList;
     private MessageAdapter messageAdapter;
     private List<Mesaj> mesajList = new ArrayList<>();
-
 
     @Nullable
     @Override
@@ -38,9 +44,12 @@ public class MessageActivity extends Fragment {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference reference = db.getReference("mesaj");
         List<Mesaj> mesajList = new ArrayList<>();
-        HashMap<String, List<Mesaj>> mesajmap = new HashMap<>();
-
+        List<Mesaj> mesajList2 = new ArrayList<>();
+        List<String> mesajList3 = new ArrayList<>();
+        List<String> mesajList4 = new ArrayList<>();
         reference.addValueEventListener(new ValueEventListener() {
+            Boolean aq = true;
+
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -52,15 +61,22 @@ public class MessageActivity extends Fragment {
 
                         Mesaj mesaj = d.getValue(Mesaj.class);
 
+                        if (mesaj.getToKisi().equals(username)) {//gelen kutusu
+                            //Map<String, List<Mesaj>> listMap = mesajList.stream().collect(Collectors.groupingBy(Mesaj::getFromKisi));
+                            mesajList.add(mesaj);
+                            Map<String, List<Mesaj>> listMap = mesajList.stream().collect(Collectors.groupingBy(Mesaj::getFromKisi));
+                            for (String key : listMap.keySet()) {
 
-                        if (mesaj.getToKisi().equals(username)) {
-                            if (mesajList.contains(mesaj.getToKisi()) || mesajList.size() == 0) {//gelen kutusu
-                                mesajList.add(mesaj);
+                                if (!mesajList3.contains(mesaj.getFromKisi()) && key == mesaj.getFromKisi()) {
+                                    mesajList3.add(key);
+                                    mesajList2.add(mesaj);
+
+                                }
+
                             }
-
                         }
                         rvMessageList = view.findViewById(R.id.rvMessageList);
-                        messageAdapter = new MessageAdapter(mesajList, getContext());
+                        messageAdapter = new MessageAdapter(mesajList2, getContext());
                         messageAdapter.setUsername(username);
                         rvMessageList.setAdapter(messageAdapter);
                         rvMessageList.setLayoutManager(new StaggeredGridLayoutManager(10, StaggeredGridLayoutManager.HORIZONTAL));
@@ -73,7 +89,6 @@ public class MessageActivity extends Fragment {
 
             }
         });
-
 
 
         return view;

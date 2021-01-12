@@ -17,11 +17,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageHolder> {
     List<Mesaj> mesajList;
     Context context;
-    HashMap<String, List<Mesaj>> mesajmap;
     String username;
 
     public String getUsername() {
@@ -64,7 +65,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
                 bnd.putString("fromkisi", holder.textUserMessage.getText().toString());
                 bnd.putString("tokisi",getUsername());
                 userSpecialMessage.setArguments(bnd);
-
+                Map<String, List<Mesaj>> listMap = mesajList.stream().collect(Collectors.groupingBy(Mesaj::getFromKisi));
 
 
             }

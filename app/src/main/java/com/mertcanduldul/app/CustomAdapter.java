@@ -23,6 +23,32 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
 
     List<Urun> mList;
     Context context;
+    private String userkey,username,userfullname;
+
+
+    public String getUserkey() {
+        return userkey;
+    }
+
+    public void setUserkey(String userkey) {
+        this.userkey = userkey;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUserfullname() {
+        return userfullname;
+    }
+
+    public void setUserfullname(String userfullname) {
+        this.userfullname = userfullname;
+    }
 
     public CustomAdapter(List<Urun> mList, Context context) {
         this.mList = mList;
@@ -59,10 +85,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
                 bundle.putString("urun_adi", holder.textUrunAdi.getText().toString());
                 bundle.putString("urun_aciklama", holder.textAciklama.getText().toString());
                 bundle.putString("urun_fiyat", holder.textUrunFiyat.getText().toString());
+                bundle.putString("loginusername",getUsername());
+                bundle.putString("loginuserkey",getUserkey());
+                bundle.putString("loginfullname",getUserfullname());
 
                 myFragment.setArguments(bundle);
             }
         });
+        holder.buttonGirisYap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
     }
 
     @Override
@@ -76,6 +111,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
         TextView textUrunFiyat;
         ImageView urunImage;
         Button buttonDetail;
+        Button buttonGirisYap;
 
         public ProductHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,7 +120,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
             textAciklama = itemView.findViewById(R.id.textUrunAciklama);
             urunImage = itemView.findViewById(R.id.urunImage);
             buttonDetail = itemView.findViewById(R.id.buttonDetay);
-
+            buttonGirisYap = itemView.findViewById(R.id.buttonGirisYap);
         }
     }
 }
