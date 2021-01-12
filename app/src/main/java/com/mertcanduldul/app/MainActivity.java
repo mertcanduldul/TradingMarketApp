@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                     bundle.putString("usernamefullname", usernamefullname);
                     bundle.putString("username", username);
                     bundle.putString("userkey", userkey);
-
                     tempFragment.setArguments(bundle);
                 }
 

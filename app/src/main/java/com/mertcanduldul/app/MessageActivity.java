@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ public class MessageActivity extends Fragment {
     private RecyclerView rvMessageList;
     private MessageAdapter messageAdapter;
     private List<Mesaj> mesajList = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -59,6 +61,7 @@ public class MessageActivity extends Fragment {
                         }
                         rvMessageList = view.findViewById(R.id.rvMessageList);
                         messageAdapter = new MessageAdapter(mesajList, getContext());
+                        messageAdapter.setUsername(username);
                         rvMessageList.setAdapter(messageAdapter);
                         rvMessageList.setLayoutManager(new StaggeredGridLayoutManager(10, StaggeredGridLayoutManager.HORIZONTAL));
                     }
@@ -70,6 +73,9 @@ public class MessageActivity extends Fragment {
 
             }
         });
+
+
+
         return view;
     }
 }
