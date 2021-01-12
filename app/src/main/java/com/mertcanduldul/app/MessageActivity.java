@@ -1,5 +1,6 @@
 package com.mertcanduldul.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,40 +12,64 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class MessageActivity extends Fragment {
     private RecyclerView rvMessageList;
     private MessageAdapter messageAdapter;
+    private List<Mesaj> mesajList = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.message_layout, container, false);
 
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference reference = db.getReference("mesaj");
         List<Mesaj> mesajList = new ArrayList<>();
-        Mesaj m = new Mesaj();
-        m.setId("1");
-        m.setFromKisi("sero");
-        m.setMesajicerik("mesaj icerik xd");
-        m.setToKisi("mert");
-        m.setZaman("22 Mayıs");
-        Mesaj m1 = new Mesaj();
-        m1.setId("2");
-        m1.setFromKisi("melihin");
-        m1.setMesajicerik("mesaj icerik xd");
-        m1.setToKisi("mert");
-        m1.setZaman("23 Kasım");
-        mesajList.add(m);
-        mesajList.add(m1);
+        HashMap<String, List<Mesaj>> mesajmap = new HashMap<>();
 
-            rvMessageList = view.findViewById(R.id.rvMessageList);
-            messageAdapter = new MessageAdapter(mesajList, getContext());
-            rvMessageList.setAdapter(messageAdapter);
-            rvMessageList.setLayoutManager(new StaggeredGridLayoutManager(10, StaggeredGridLayoutManager.HORIZONTAL));
+        reference.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot d : dataSnapshot.getChildren()) {
+                    if (getArguments() != null) {
+                        String username = getArguments().getString("username");
+                        String userfullname = getArguments().getString("userfullname");
+                        String userkey = getArguments().getString("userkey");
+
+                        Mesaj mesaj = d.getValue(Mesaj.class);
 
 
+                        if (mesaj.getToKisi().equals(username)) {
+                            if (mesajList.contains(mesaj.getToKisi()) || mesajList.size() == 0) {//gelen kutusu
+                                mesajList.add(mesaj);
+                            }
+
+                        }
+                        rvMessageList = view.findViewById(R.id.rvMessageList);
+                        messageAdapter = new MessageAdapter(mesajList, getContext());
+                        rvMessageList.setAdapter(messageAdapter);
+                        rvMessageList.setLayoutManager(new StaggeredGridLayoutManager(10, StaggeredGridLayoutManager.HORIZONTAL));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         return view;
     }
 }

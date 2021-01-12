@@ -27,7 +27,7 @@ import java.util.List;
 
 public class ProfileActivity extends Fragment {
     private TextView textName, textAdres;
-    private Button buttonProfileAddProduct, buttonRvLoad;
+    private Button buttonProfileAddProduct;
     List<Urun> urunList;
 
     private CustomAdapter customAdapter;
@@ -40,7 +40,6 @@ public class ProfileActivity extends Fragment {
         textName = view.findViewById(R.id.textName);
         textAdres = view.findViewById(R.id.textAdres);
         buttonProfileAddProduct = view.findViewById(R.id.buttonProfileAddProduct);
-        buttonRvLoad = view.findViewById(R.id.buttonRvLoad);
 
         if (getArguments() != null) {
             String username = this.getArguments().getString("username");
@@ -68,25 +67,6 @@ public class ProfileActivity extends Fragment {
             }
         });
 
-        buttonRvLoad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (urunList != null) {
-                    RecyclerView rv = view.findViewById(R.id.profileRv);
-                    customAdapter = new CustomAdapter(urunList, getContext());
-                    rv.setAdapter(customAdapter);
-                    rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-
-                }
-            }
-        });
-
-        return view;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference myref = db.getReference("urun");
@@ -109,14 +89,19 @@ public class ProfileActivity extends Fragment {
                         }
                     }
                 }
+                    RecyclerView rv = view.findViewById(R.id.profileRv);
+                    customAdapter = new CustomAdapter(urunList, getContext());
+                    rv.setAdapter(customAdapter);
+                    rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
+        return view;
     }
+
 
 }

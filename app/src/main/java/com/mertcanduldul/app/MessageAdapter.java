@@ -13,11 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageHolder> {
     List<Mesaj> mesajList;
     Context context;
+    HashMap<String, List<Mesaj>> mesajmap;
+
+    public MessageAdapter(List<Mesaj> mesajList, Context context) {
+        this.mesajList = mesajList;
+        this.context = context;
+    }
 
     @NonNull
     @Override
@@ -26,10 +33,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
         return new MessageHolder(itemView);
     }
 
-    public MessageAdapter(List<Mesaj> mesajList, Context context) {
-        this.mesajList = mesajList;
-        this.context = context;
-    }
 
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.MessageHolder holder, int position) {

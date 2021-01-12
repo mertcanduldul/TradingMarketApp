@@ -43,13 +43,6 @@
             android:translationX="250dp"
             android:translationY="10dp" />
 
-        <Button
-            android:id="@+id/buttonRvLoad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SATTIKLARIM"
-            android:translationX="250dp"
-            android:translationY="60dp" />
     </FrameLayout>
 
     <ImageView
