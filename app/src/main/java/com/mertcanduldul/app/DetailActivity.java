@@ -110,11 +110,11 @@ public class DetailActivity extends Fragment {
                                                 FirebaseDatabase db3 = FirebaseDatabase.getInstance();
                                                 DatabaseReference reference3 = db3.getReference("mesaj");
 
-                                                reference3.addChildEventListener(new ChildEventListener() {
+                                                reference3.addValueEventListener(new ValueEventListener() {
                                                     Boolean unique = true;
 
                                                     @Override
-                                                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                         if (unique) {
                                                             String username = getArguments().getString("loginusername");
                                                             Mesaj m = new Mesaj();
@@ -123,24 +123,15 @@ public class DetailActivity extends Fragment {
                                                             m.setZaman("12 Ocak");
                                                             m.setFromKisi(username);
 
+                                                            Mesaj m1 = new Mesaj();
+                                                            m1.setToKisi(username);
+                                                            m1.setMesajicerik("İçerik görüntülendi");
+                                                            m1.setFromKisi(tokisi);
+                                                            m1.setZaman("12 Ocak");
                                                             reference3.push().setValue(m);
+                                                            reference3.push().setValue(m1);
                                                             unique = false;
                                                         }
-                                                    }
-
-                                                    @Override
-                                                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                                                    }
-
-                                                    @Override
-                                                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                                                    }
-
-                                                    @Override
-                                                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
                                                     }
 
                                                     @Override

@@ -66,13 +66,10 @@ public class MessageActivity extends Fragment {
                             mesajList.add(mesaj);
                             Map<String, List<Mesaj>> listMap = mesajList.stream().collect(Collectors.groupingBy(Mesaj::getFromKisi));
                             for (String key : listMap.keySet()) {
-
                                 if (!mesajList3.contains(mesaj.getFromKisi()) && key == mesaj.getFromKisi()) {
                                     mesajList3.add(key);
                                     mesajList2.add(mesaj);
-
                                 }
-
                             }
                         }
                         rvMessageList = view.findViewById(R.id.rvMessageList);

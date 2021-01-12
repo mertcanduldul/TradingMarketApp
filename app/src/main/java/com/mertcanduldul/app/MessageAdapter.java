@@ -65,7 +65,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
                 bnd.putString("fromkisi", holder.textUserMessage.getText().toString());
                 bnd.putString("tokisi",getUsername());
                 userSpecialMessage.setArguments(bnd);
-                Map<String, List<Mesaj>> listMap = mesajList.stream().collect(Collectors.groupingBy(Mesaj::getFromKisi));
 
 
             }
