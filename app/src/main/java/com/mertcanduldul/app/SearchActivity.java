@@ -54,8 +54,7 @@ public class SearchActivity extends Fragment {
                         mList.add(u2);
                         Bundle b = new Bundle();
                         b.putString("productowner", u2.getUrun_sahibi_id());
-                    }
-                    if (customAdapter != null || rv != null) {
+
                         String userfullname = getArguments().getString("userfullname");
                         String username = getArguments().getString("username");
                         String userkey = getArguments().getString("userkey");
@@ -68,22 +67,19 @@ public class SearchActivity extends Fragment {
                         rv.setAdapter(customAdapter);
                         rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
                     }
-
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-        RecyclerView rv = view.findViewById(R.id.rv);
+        rv = view.findViewById(R.id.rv);
         customAdapter = new CustomAdapter(mList, getContext());
         rv.setAdapter(customAdapter);
         rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
-
+        Toast.makeText(getActivity(), "URUN ARAMAK İÇİN SEARCHLE !", Toast.LENGTH_LONG).show();
         return view;
     }
-
 }
