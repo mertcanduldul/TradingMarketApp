@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
 public class MessageActivity extends Fragment {
     private RecyclerView rvMessageList;
     private MessageAdapter messageAdapter;
-    private List<Mesaj> mesajList = new ArrayList<>();
+    //  private List<Mesaj> mesajList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -46,10 +46,8 @@ public class MessageActivity extends Fragment {
         List<Mesaj> mesajList = new ArrayList<>();
         List<Mesaj> mesajList2 = new ArrayList<>();
         List<String> mesajList3 = new ArrayList<>();
-        List<String> mesajList4 = new ArrayList<>();
         reference.addValueEventListener(new ValueEventListener() {
             Boolean aq = true;
-
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -60,9 +58,8 @@ public class MessageActivity extends Fragment {
                         String userkey = getArguments().getString("userkey");
 
                         Mesaj mesaj = d.getValue(Mesaj.class);
-
-                        if (mesaj.getToKisi().equals(username)) {//gelen kutusu
-                            //Map<String, List<Mesaj>> listMap = mesajList.stream().collect(Collectors.groupingBy(Mesaj::getFromKisi));
+                        if (mesaj.getToKisi().equals(username)) {
+                            //gelen kutusu
                             mesajList.add(mesaj);
                             Map<String, List<Mesaj>> listMap = mesajList.stream().collect(Collectors.groupingBy(Mesaj::getFromKisi));
                             for (String key : listMap.keySet()) {
@@ -86,8 +83,6 @@ public class MessageActivity extends Fragment {
 
             }
         });
-
-
         return view;
     }
 }

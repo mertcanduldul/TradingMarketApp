@@ -53,7 +53,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageH
         holder.textDateMessage.setText(m.getZaman());
         Picasso.
                 get().
-                load("https://pbs.twimg.com/profile_images/2224119204/557523_199181593530846_199176213531384_325140_69930876_n_400x400.jpg").
+                load("https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-users-icon-png-image_4144740.jpg").
                 into(holder.imageUserMessage);
         holder.buttonGotoMessage.setOnClickListener(new View.OnClickListener() {
             @Override

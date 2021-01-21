@@ -78,8 +78,6 @@ public class SearchActivity extends Fragment {
         customAdapter = new CustomAdapter(mList, getContext());
         rv.setAdapter(customAdapter);
         rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-
-        Toast.makeText(getActivity(), "URUN ARAMAK İÇİN SEARCHLE !", Toast.LENGTH_LONG).show();
         return view;
     }
 }
