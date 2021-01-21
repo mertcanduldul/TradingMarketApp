@@ -92,11 +92,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
                 myFragment.setArguments(bundle);
             }
         });
-        holder.buttonGirisYap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+
 
     }
 
@@ -120,7 +116,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ProductHol
             textAciklama = itemView.findViewById(R.id.textUrunAciklama);
             urunImage = itemView.findViewById(R.id.urunImage);
             buttonDetail = itemView.findViewById(R.id.buttonDetay);
-            buttonGirisYap = itemView.findViewById(R.id.buttonGirisYap);
+           // buttonGirisYap = itemView.findViewById(R.id.buttonGirisYap);
         }
     }
 }
