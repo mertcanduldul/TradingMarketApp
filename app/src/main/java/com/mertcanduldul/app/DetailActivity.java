@@ -131,6 +131,7 @@ public class DetailActivity extends Fragment {
                                                             reference3.push().setValue(m);
                                                             reference3.push().setValue(m1);
                                                             unique = false;
+                                                            buttonDetayBuy.setText("MSJ GONDERILDI");
                                                         }
                                                     }
 

@@ -49,10 +49,20 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textKayitAd"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="#FFFFFF"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
@@ -62,7 +72,9 @@
             android:layout_height="wrap_content"
             android:background="#FF2E7A"
             android:backgroundTint="#FF2E7A"
+            android:foregroundTint="#FFFFFF"
             android:hint="Full Name"
+            android:shadowColor="#FFFFFF"
             android:textColor="@color/white"
             android:textColorHighlight="@color/white"
             android:textColorHint="@color/white"
@@ -71,12 +83,23 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textKayitAd">
+        app:layout_constraintTop_toBottomOf="@+id/textKayitAd"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="#FFFFFF"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="#FFFFFF"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textEmail"
@@ -85,22 +108,34 @@
             android:background="#FF2E7A"
             android:backgroundTint="#FF2E7A"
             android:hint="Email"
-            android:textColor="@color/white"
             android:textColorHighlight="@color/white"
+            android:textColorLink="@color/white"
+            android:foregroundTint="#FFFFFF"
+            android:shadowColor="#FFFFFF"
             android:textColorHint="@color/white"
-            android:textColorLink="@color/white" />
+            android:textColor="@color/white"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        app:hintTextColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         app:passwordToggleEnabled="true"
+        android:textColorHint="@color/white"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeColor="#FFFFFF"
+        app:boxStrokeWidth="5dp"
+        app:hintTextColor="#FFFFFF"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -110,10 +145,13 @@
             android:background="#FF2E7A"
             android:backgroundTint="#FF2E7A"
             android:hint="Password"
-            android:textColor="@color/white"
             android:textColorHighlight="@color/white"
+            android:textColorLink="@color/white"
+            android:foregroundTint="#FFFFFF"
+            android:shadowColor="#FFFFFF"
             android:textColorHint="@color/white"
-            android:textColorLink="@color/white" />
+            android:textColor="@color/white"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

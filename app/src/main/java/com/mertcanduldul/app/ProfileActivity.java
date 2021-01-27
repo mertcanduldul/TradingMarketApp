@@ -38,7 +38,6 @@ public class ProfileActivity extends Fragment {
         View view = inflater.inflate(R.layout.profile_layout, container, false);
 
         textName = view.findViewById(R.id.textName);
-        textAdres = view.findViewById(R.id.textAdres);
         buttonProfileAddProduct = view.findViewById(R.id.buttonProfileAddProduct);
 
         if (getArguments() != null) {

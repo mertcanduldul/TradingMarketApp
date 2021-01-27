@@ -25,16 +25,6 @@
             android:textColor="@color/black"
             android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/textAdres"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="76dp"
-            android:text="Adres"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
-
         <Button
             android:id="@+id/buttonProfileAddProduct"
             android:layout_width="133dp"

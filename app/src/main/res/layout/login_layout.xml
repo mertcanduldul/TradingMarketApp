@@ -97,9 +97,8 @@
                 android:layout_height="wrap_content"
                 android:foregroundTint="#FFFFFF"
                 android:shadowColor="#FFFFFF"
-                android:textColorHint="@color/white"
                 android:textColor="@color/white"
-                />
+                android:textColorHint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -128,9 +127,8 @@
                 android:layout_height="wrap_content"
                 android:foregroundTint="#FFFFFF"
                 android:shadowColor="#FFFFFF"
-                android:textColorHint="@color/white"
                 android:textColor="@color/white"
-                />
+                android:textColorHint="@color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -163,6 +161,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
             app:strokeColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Mert Can Düldül"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

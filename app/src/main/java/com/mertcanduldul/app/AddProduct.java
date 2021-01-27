@@ -70,6 +70,8 @@ public class AddProduct extends Fragment {
         buttonProductAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                buttonProductAdd.setEnabled(false);
+                buttonProductAdd.setText("Urun Ekleniyor.");
                 String strCityname = textCityname.getText().toString();
                 String strProductname = textProductName.getText().toString();
                 String strProductprice = textProductPrice.getText().toString();
